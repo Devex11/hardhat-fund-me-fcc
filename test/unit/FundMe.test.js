@@ -1,4 +1,4 @@
-const { deployments, ethers, getNamedAccounts } = require("hardhat");
+const { deployments, ethers, networks } = require("hardhat");
 const { assert, expect } = require("chai");
 const { developmentChains } = require("../../helper-hardhat-config");
 !developmentChains.includes(network.name)
@@ -22,7 +22,7 @@ const { developmentChains } = require("../../helper-hardhat-config");
       });
       describe("constructor", function () {
         it("sets the aggregator addresses correctly", async function () {
-          const response = await fundMe.priceFeed(); //priceFeed is from fundme.sol contract constructor
+          const response = await fundMe.getPriceFeed(); //priceFeed is from fundme.sol contract constructor
           assert.equal(response, mockV3Aggregator.address);
         });
       });
